@@ -5,9 +5,9 @@ description: Moonpig Orb to deploy to AWS with Terragrunt
 jobs:
   deploy_component:
     parameters:
-      aws_access_key_id:
-        description: The AWS Access Key ID
-        type: string
+      # aws_access_key_id:
+      #   description: The AWS Access Key ID
+      #   type: string
       aws_account_id:
         description: The target AWS Account ID
         type: string
@@ -18,9 +18,9 @@ jobs:
       aws_role_name:
         description: The target AWS Role Name
         type: string
-      aws_secret_access_key:
-        description: The AWS Secret Access Key
-        type: string
+      # aws_secret_access_key:
+      #   description: The AWS Secret Access Key
+      #   type: string
       moonpig_aws_build_container_version:
         description: "The version of the Moonpig 'build-aws' container."
         type: string
@@ -30,9 +30,9 @@ jobs:
         type: string
     executor:
       name: terragrunt_executor
-      aws_access_key_id: <<parameters.aws_access_key_id>>
+      # aws_access_key_id: <<parameters.aws_access_key_id>>
       aws_default_region: <<parameters.aws_region>>
-      aws_secret_access_key: <<parameters.aws_secret_access_key>>
+      # aws_secret_access_key: <<parameters.aws_secret_access_key>>
       version: <<parameters.moonpig_aws_build_container_version>>
     steps:
     - assume_role_and_run_terragrunt:
@@ -67,19 +67,19 @@ commands:
 executors:
   terragrunt_executor:
     parameters:
-      aws_access_key_id:
-        type: string
+      # aws_access_key_id:
+      #   type: string
       aws_default_region:
         type: string
         default: eu-west-1
-      aws_secret_access_key:
-        type: string
+      # aws_secret_access_key:
+      #   type: string
       version:
         type: string
         default: latest
     environment:
-      AWS_ACCESS_KEY_ID: <<parameters.aws_access_key_id>>
-      AWS_SECRET_ACCESS_KEY: <<parameters.aws_secret_access_key>>
+      # AWS_ACCESS_KEY_ID: <<parameters.aws_access_key_id>>
+      # AWS_SECRET_ACCESS_KEY: <<parameters.aws_secret_access_key>>
       AWS_DEFAULT_REGION: <<parameters.aws_default_region>>
     docker:
     - image: moonpig/build-aws:<<parameters.version>>
