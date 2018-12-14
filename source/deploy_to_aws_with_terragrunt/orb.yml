@@ -53,6 +53,9 @@ commands:
     - run:
         name: Assume Role & Run Terragrunt
         command: |
+          echo "ENV TEST START..."
+          printenv API_VARIABLE_TEST
+          echo "...ENV TEST END"
           echo "Current identity..."
           aws sts get-caller-identity
           echo "Assuming role..."
