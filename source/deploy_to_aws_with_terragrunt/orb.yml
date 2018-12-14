@@ -54,7 +54,7 @@ commands:
         name: Assume Role & Run Terragrunt
         command: |
           echo "ENV TEST START..."
-          printenv MY_VARIABLE_TEST
+          echo ${MY_VARIABLE_TEST}
           echo "...ENV TEST END"
 
           echo "Current identity..."
